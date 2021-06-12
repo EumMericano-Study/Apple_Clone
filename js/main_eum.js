@@ -1,4 +1,8 @@
 (() => {
+  let pageYOffset = 0;
+  let prevScrollHeight = 0;
+  let currentScene = 0;
+
   const sceneInfo = [
     {
       // 0
@@ -48,6 +52,26 @@
       ].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
     }
   }
+
+  function scrollLoop() {
+    prevScrollHeight = 0;
+    for (let i = 0; i < currentScene; i++) {
+      prevScrollHeight += sceneInfo[i].scrollHeight;
+    }
+    if (pageYOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
+      if (currentScene === sceneInfo.length - 1) return;
+      currentScene++;
+    }
+    if (pageYOffset < prevScrollHeight) {
+      if (currentScene === 0) return;
+      currentScene--;
+    }
+  }
+
   window.addEventListener("resize", setLayout);
+  window.addEventListener("scroll", () => {
+    pageYOffset = window.pageYOffset;
+    scrollLoop();
+  });
   setLayout();
 })();
