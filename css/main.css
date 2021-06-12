@@ -158,6 +158,20 @@ a {
   background-color: darkorange;
 }
 
+.stiky-elem {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: none;
+}
+
+#show-scene-0 #scroll-section-0 .stiky-elem,
+#show-scene-2 #scroll-section-2 .stiky-elem {
+  display: block;
+}
+
 @media (min-width: 1024px) {
   #scroll-section-0 h1 {
     font-size: 9vw;
