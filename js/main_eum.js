@@ -2,6 +2,7 @@
   let yOffset = 0;
   let prevScrollHeight = 0;
   let currentScene = 0;
+  let enterNewScene = false;
 
   const sceneInfo = [
     {
@@ -79,7 +80,13 @@
     document.body.setAttribute("id", `show-scene-${currentScene}`);
   }
 
-  function calcValues(values, currentYOffset) {}
+  function calcValues(values, currentYOffset) {
+    let result;
+    let scrollRatio = currentYOffset / sceneInfo[currentScene].scrollHeight;
+
+    rv = scrollRatio * (values[1] - values[0]) + values[0];
+    return rv;
+  }
 
   function playAnimation() {
     const objs = sceneInfo[currentScene].objs;
@@ -88,10 +95,12 @@
 
     switch (currentScene) {
       case 0:
-        let message0_opacity_0 = values.message0_opacity[0];
-        let message0_opacity_1 = values.message0_opacity[1];
-
-        calcValues(values.message0_opacity, currentYOffset);
+        let message0_opacity_in = calcValues(
+          values.message0_opacity,
+          currentYOffset
+        );
+        let message0_opacity_out = values.message0_opacity[1];
+        objs.message0.style.opacity = message0_opacity_in;
         break;
       case 1:
         break;
@@ -103,20 +112,27 @@
   }
 
   function scrollLoop() {
+    enterNewScene = false;
     prevScrollHeight = 0;
+
     for (let i = 0; i < currentScene; i++) {
       prevScrollHeight += sceneInfo[i].scrollHeight;
     }
     if (yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
       if (currentScene === sceneInfo.length - 1) return;
+      enterNewScene = true;
       currentScene++;
       document.body.setAttribute("id", `show-scene-${currentScene}`);
     }
     if (pageYOffset < prevScrollHeight) {
       if (currentScene === 0) return;
+      enterNewScene = true;
       currentScene--;
       document.body.setAttribute("id", `show-scene-${currentScene}`);
     }
+
+    if (enterNewScene) return;
+
     playAnimation();
   }
 
