@@ -23,6 +23,13 @@ a {
 }
 .global-nav {
   height: 44px;
+  padding: 0 1rem;
+}
+
+.local-nav {
+  height: 52px;
+  padding: 0 1rem;
+  border-bottom: 1px solid #ddd;
 }
 
 .global-nav-links,
@@ -39,11 +46,6 @@ a {
   justify-content: space-between;
 }
 
-.local-nav {
-  height: 52px;
-  border-bottom: 1px solid #ddd;
-}
-
 .local-nav-links .product-name {
   font-size: 1.4rem;
   font-weight: bold;
@@ -55,4 +57,8 @@ a {
 }
 .local-nav-links a:not(.product-name) {
   margin-left: 2em;
+}
+
+.scroll-section {
+  padding-top: 50vh;
 }
