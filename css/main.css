@@ -168,7 +168,8 @@ a {
 }
 
 #show-scene-0 #scroll-section-0 .stiky-elem,
-#show-scene-2 #scroll-section-2 .stiky-elem {
+#show-scene-2 #scroll-section-2 .stiky-elem,
+#show-scene-3 #scroll-section-3 .stiky-elem {
   display: block;
 }
 
