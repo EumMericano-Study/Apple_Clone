@@ -11,6 +11,21 @@
       scrollHeight: 0,
       objs: {
         container: document.querySelector("#scroll-section-0"),
+        message0: document.querySelector(
+          "#scroll-section-0 .main-message[data-index='0']"
+        ),
+        message1: document.querySelector(
+          "#scroll-section-0 .main-message[data-index='1']"
+        ),
+        message2: document.querySelector(
+          "#scroll-section-0 .main-message[data-index='2']"
+        ),
+        message3: document.querySelector(
+          "#scroll-section-0 .main-message[data-index='3']"
+        ),
+      },
+      values: {
+        message0_opacity: [0, 1],
       },
     },
     {
@@ -64,6 +79,19 @@
     document.body.setAttribute("id", `show-scene-${currentScene}`);
   }
 
+  function playAnimation() {
+    switch (currentScene) {
+      case 0:
+        break;
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+    }
+  }
+
   function scrollLoop() {
     prevScrollHeight = 0;
     for (let i = 0; i < currentScene; i++) {
@@ -79,6 +107,7 @@
       currentScene--;
       document.body.setAttribute("id", `show-scene-${currentScene}`);
     }
+    playAnimation();
   }
 
   window.addEventListener("scroll", () => {
