@@ -82,6 +82,8 @@ a {
 .main-message {
   height: 3em;
 
+  top: 35vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,6 +126,16 @@ a {
   font-size: 3.5rem;
 }
 
+#scroll-section-2 .stiky-elem[data-index="1"] {
+  top: 10%;
+  left: 40%;
+  opacity: 1;
+}
+#scroll-section-2 .stiky-elem[data-index="2"] {
+  top: 15%;
+  left: 45%;
+  opacity: 1;
+}
 .desc-message {
   width: 50%;
   font-weight: bold;
@@ -175,7 +187,6 @@ a {
 .stiky-elem {
   width: 100%;
   position: fixed;
-  top: 0;
   left: 0;
 
   display: none;
@@ -206,6 +217,14 @@ a {
 
   #scroll-section-2 .main-message {
     font-size: 6vw;
+  }
+
+  #scroll-section-2 .stiky-elem[data-index="1"] {
+    top: 20%;
+    left: 53%;
+  }
+  #scroll-section-2 .stiky-elem[data-index="2"] {
+    left: 55%;
   }
 
   .main-message small {

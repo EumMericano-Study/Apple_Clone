@@ -1,4 +1,9 @@
 (() => {
+  const SECTION1_OPACITY_START = 0;
+  const SECTION1_OPACITY_END = 1;
+  const SECTION1_TLANSLATE_Y_START = 20;
+  const SECTION1_TLANSLATE_Y_END = -15;
+
   let yOffset = 0;
   let prevScrollHeight = 0;
   let currentScene = 0;
@@ -26,8 +31,30 @@
         ),
       },
       values: {
-        message0_opacity: [0, 1, { start: 0.1, end: 0.2 }],
-        message1_opacity: [0, 1, { start: 0.3, end: 0.4 }],
+        message0_opacity_in: [
+          SECTION1_OPACITY_START,
+          SECTION1_OPACITY_END,
+          { start: 0.1, end: 0.2 },
+        ],
+        message0_opacity_out: [
+          SECTION1_OPACITY_END,
+          SECTION1_OPACITY_START,
+          { start: 0.25, end: 0.3 },
+        ],
+        message0_translateY_in: [
+          SECTION1_TLANSLATE_Y_START,
+          0,
+          { start: 0.1, end: 0.2 },
+        ],
+        message0_translateY_out: [
+          0,
+          SECTION1_TLANSLATE_Y_END,
+          { start: 0.25, end: 0.3 },
+        ],
+        message1_opacity_in: [0, 1, { start: 0.3, end: 0.4 }],
+        message1_opacity_out: [1, 0, { start: 0.35, end: 0.4 }],
+        message1_opacity_in: [-20, 0, { start: 0.3, end: 0.4 }],
+        message1_opacity_out: [0, 15, { start: 0.35, end: 0.4 }],
       },
     },
     {
@@ -62,7 +89,12 @@
   function setLayout() {
     // 각 스크롤 섹션의 높이 세팅
     for (let i = 0; i < sceneInfo.length; i++) {
-      sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
+      if (sceneInfo[i].type === "sticky") {
+        sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
+      }
+      if (sceneInfo[i].type === "normal") {
+        sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.offsetHeight;
+      }
       sceneInfo[
         i
       ].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
@@ -112,19 +144,44 @@
     return rv;
   }
 
+  function CalcMeanValue(a, b) {
+    return (a + b) / 2;
+  }
   function playAnimation() {
     const objs = sceneInfo[currentScene].objs;
     const values = sceneInfo[currentScene].values;
     const currentYOffset = yOffset - prevScrollHeight;
+    const scrollHeight = sceneInfo[currentScene].scrollHeight;
+    const scrollRatio = currentYOffset / scrollHeight;
 
     switch (currentScene) {
       case 0:
-        let message0_opacity_in = calcValues(
-          values.message0_opacity,
-          currentYOffset
-        );
-        let message0_opacity_out = values.message0_opacity[1];
-        objs.message0.style.opacity = message0_opacity_in;
+        if (
+          scrollRatio <=
+          CalcMeanValue(
+            values.message0_opacity_in[2].end,
+            values.message0_opacity_out[2].end
+          )
+        ) {
+          objs.message0.style.opacity = calcValues(
+            values.message0_opacity_in,
+            currentYOffset
+          );
+          objs.message0.style.transform = `translateY(${calcValues(
+            values.message0_translateY_in,
+            currentYOffset
+          )}%)`;
+        } else {
+          objs.message0.style.opacity = calcValues(
+            values.message0_opacity_out,
+            currentYOffset
+          );
+          objs.message0.style.transform = `translateY(${calcValues(
+            values.message0_translateY_out,
+            currentYOffset
+          )}%)`;
+        }
+
         break;
       case 1:
         break;
