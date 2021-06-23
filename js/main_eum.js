@@ -51,10 +51,66 @@
           SECTION1_TLANSLATE_Y_END,
           { start: 0.25, end: 0.3 },
         ],
-        message1_opacity_in: [0, 1, { start: 0.3, end: 0.4 }],
-        message1_opacity_out: [1, 0, { start: 0.35, end: 0.4 }],
-        message1_opacity_in: [-20, 0, { start: 0.3, end: 0.4 }],
-        message1_opacity_out: [0, 15, { start: 0.35, end: 0.4 }],
+        message1_opacity_in: [
+          SECTION1_OPACITY_START,
+          SECTION1_OPACITY_END,
+          { start: 0.3, end: 0.4 },
+        ],
+        message1_opacity_out: [
+          SECTION1_OPACITY_END,
+          SECTION1_OPACITY_START,
+          { start: 0.45, end: 0.5 },
+        ],
+        message1_translateY_in: [
+          SECTION1_TLANSLATE_Y_START,
+          0,
+          { start: 0.3, end: 0.4 },
+        ],
+        message1_translateY_out: [
+          0,
+          SECTION1_TLANSLATE_Y_END,
+          { start: 0.45, end: 0.5 },
+        ],
+        message2_opacity_in: [
+          SECTION1_OPACITY_START,
+          SECTION1_OPACITY_END,
+          { start: 0.5, end: 0.6 },
+        ],
+        message2_opacity_out: [
+          SECTION1_OPACITY_END,
+          SECTION1_OPACITY_START,
+          { start: 0.65, end: 0.7 },
+        ],
+        message2_translateY_in: [
+          SECTION1_TLANSLATE_Y_START,
+          0,
+          { start: 0.5, end: 0.6 },
+        ],
+        message2_translateY_out: [
+          0,
+          SECTION1_TLANSLATE_Y_END,
+          { start: 0.65, end: 0.7 },
+        ],
+        message3_opacity_in: [
+          SECTION1_OPACITY_START,
+          SECTION1_OPACITY_END,
+          { start: 0.7, end: 0.8 },
+        ],
+        message3_translateY_in: [
+          SECTION1_TLANSLATE_Y_START,
+          0,
+          { start: 0.7, end: 0.8 },
+        ],
+        message3_opacity_out: [
+          SECTION1_OPACITY_END,
+          SECTION1_OPACITY_START,
+          { start: 0.85, end: 0.9 },
+        ],
+        message3_translateY_out: [
+          0,
+          SECTION1_TLANSLATE_Y_END,
+          { start: 0.85, end: 0.9 },
+        ],
       },
     },
     {
@@ -178,6 +234,82 @@
           );
           objs.message0.style.transform = `translateY(${calcValues(
             values.message0_translateY_out,
+            currentYOffset
+          )}%)`;
+        }
+
+        if (
+          scrollRatio <=
+          CalcMeanValue(
+            values.message1_opacity_in[2].end,
+            values.message1_opacity_out[2].end
+          )
+        ) {
+          objs.message1.style.opacity = calcValues(
+            values.message1_opacity_in,
+            currentYOffset
+          );
+          objs.message1.style.transform = `translateY(${calcValues(
+            values.message1_translateY_in,
+            currentYOffset
+          )}%)`;
+        } else {
+          objs.message1.style.opacity = calcValues(
+            values.message1_opacity_out,
+            currentYOffset
+          );
+          objs.message1.style.transform = `translateY(${calcValues(
+            values.message1_translateY_out,
+            currentYOffset
+          )}%)`;
+        }
+        if (
+          scrollRatio <=
+          CalcMeanValue(
+            values.message2_opacity_in[2].end,
+            values.message2_opacity_out[2].end
+          )
+        ) {
+          objs.message2.style.opacity = calcValues(
+            values.message2_opacity_in,
+            currentYOffset
+          );
+          objs.message2.style.transform = `translateY(${calcValues(
+            values.message2_translateY_in,
+            currentYOffset
+          )}%)`;
+        } else {
+          objs.message2.style.opacity = calcValues(
+            values.message2_opacity_out,
+            currentYOffset
+          );
+          objs.message2.style.transform = `translateY(${calcValues(
+            values.message2_translateY_out,
+            currentYOffset
+          )}%)`;
+        }
+        if (
+          scrollRatio <=
+          CalcMeanValue(
+            values.message3_opacity_in[2].end,
+            values.message3_opacity_out[2].end
+          )
+        ) {
+          objs.message3.style.opacity = calcValues(
+            values.message3_opacity_in,
+            currentYOffset
+          );
+          objs.message3.style.transform = `translateY(${calcValues(
+            values.message3_translateY_in,
+            currentYOffset
+          )}%)`;
+        } else {
+          objs.message3.style.opacity = calcValues(
+            values.message3_opacity_out,
+            currentYOffset
+          );
+          objs.message3.style.transform = `translateY(${calcValues(
+            values.message3_translateY_out,
             currentYOffset
           )}%)`;
         }
