@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,15 @@
 			margin: 0;
 			padding: 0;
 		}
+
 		body {
 			height: 500vh;
 		}
+
 		body.before-load {
 			overflow-y: hidden;
 		}
+
 		.sample-video {
 			position: fixed;
 			top: 0;
@@ -23,6 +27,7 @@
 		}
 	</style>
 </head>
+
 <body class="before-load">
 	<video class="sample-video" src="../video/sample-low.mp4" muted></video>
 	<!-- <video class="sample-video" src="../video/sample-high.mp4" muted></video> -->
@@ -36,7 +41,6 @@
 
 			window.addEventListener('scroll', function () {
 				progress = pageYOffset / (document.body.offsetHeight - window.innerHeight);
-				console.log(progress);
 				if (progress < 0) progress = 0;
 				if (progress > 1) progress = 1;
 
@@ -47,4 +51,5 @@
 		window.addEventListener('load', init);
 	</script>
 </body>
+
 </html>
