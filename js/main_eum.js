@@ -116,7 +116,6 @@
     {
       index: 1,
       type: "normal",
-      heightNum: 5,
       scrollHeight: 0,
       objs: {
         container: document.querySelector("#scroll-section-1"),
@@ -129,6 +128,41 @@
       scrollHeight: 0,
       objs: {
         container: document.querySelector("#scroll-section-2"),
+        message0: document.querySelector(
+          "#scroll-section-2 .main-message[data-index='0']"
+        ),
+        message1: document.querySelector(
+          "#scroll-section-2 .desc-message[data-index='1']"
+        ),
+        pin1: document.querySelector(
+          "#scroll-section-2 .desc-message[data-index='1'] .pin"
+        ),
+        message2: document.querySelector(
+          "#scroll-section-2 .desc-message[data-index='2']"
+        ),
+        pin2: document.querySelector(
+          "#scroll-section-2 .desc-message[data-index='2'] .pin"
+        ),
+      },
+      values: {
+        message0_translateY_in: [20, 0, { start: 0.15, end: 0.2 }],
+        message1_translateY_in: [30, 0, { start: 0.5, end: 0.55 }],
+        message2_translateY_in: [30, 0, { start: 0.72, end: 0.77 }],
+        message0_opacity_in: [0, 1, { start: 0.15, end: 0.2 }],
+        message1_opacity_in: [0, 1, { start: 0.5, end: 0.55 }],
+        message2_opacity_in: [0, 1, { start: 0.72, end: 0.77 }],
+        message0_translateY_out: [0, -20, { start: 0.3, end: 0.35 }],
+        message1_translateY_out: [0, -20, { start: 0.58, end: 0.63 }],
+        message2_translateY_out: [0, -20, { start: 0.85, end: 0.9 }],
+        message0_opacity_out: [1, 0, { start: 0.3, end: 0.35 }],
+        message1_opacity_out: [1, 0, { start: 0.58, end: 0.62 }],
+        message2_opacity_out: [1, 0, { start: 0.85, end: 0.9 }],
+        pin1_scaleY: [50, 100, { start: 0.5, end: 0.55 }],
+        pin2_scaleY: [50, 100, { start: 0.72, end: 0.77 }],
+        pin1_opacity_in: [0, 1, { start: 0.5, end: 0.55 }],
+        pin2_opacity_in: [0, 1, { start: 0.72, end: 0.77 }],
+        pin1_opacity_out: [1, 0, { start: 0.58, end: 0.62 }],
+        pin2_opacity_out: [1, 0, { start: 0.85, end: 0.9 }],
       },
     },
     {
@@ -138,6 +172,9 @@
       scrollHeight: 0,
       objs: {
         container: document.querySelector("#scroll-section-3"),
+        canvasCaption: document.querySelector(
+          "#scroll-section-3 .canvas-caption"
+        ),
       },
     },
   ];
@@ -315,9 +352,109 @@
         }
 
         break;
-      case 1:
-        break;
       case 2:
+        if (
+          scrollRatio <=
+          CalcMeanValue(
+            values.message0_opacity_in[2].end,
+            values.message0_opacity_out[2].end
+          )
+        ) {
+          objs.message0.style.opacity = calcValues(
+            values.message0_opacity_in,
+            currentYOffset
+          );
+          objs.message0.style.transform = `translateY(${calcValues(
+            values.message0_translateY_in,
+            currentYOffset
+          )}%)`;
+        } else {
+          objs.message0.style.opacity = calcValues(
+            values.message0_opacity_out,
+            currentYOffset
+          );
+          objs.message0.style.transform = `translateY(${calcValues(
+            values.message0_translateY_out,
+            currentYOffset
+          )}%)`;
+        }
+        if (
+          scrollRatio <=
+          CalcMeanValue(
+            values.message1_opacity_in[2].end,
+            values.message1_opacity_out[2].end
+          )
+        ) {
+          objs.message1.style.opacity = calcValues(
+            values.message1_opacity_in,
+            currentYOffset
+          );
+          objs.message1.style.transform = `translateY(${calcValues(
+            values.message1_translateY_in,
+            currentYOffset
+          )}%)`;
+          objs.pin1.style.opacity = calcValues(
+            values.pin1_opacity_in,
+            currentYOffset
+          );
+          objs.pin1.style.transform = `scaleY(${calcValues(
+            values.pin1_scaleY,
+            currentYOffset
+          )}%)`;
+        } else {
+          objs.message1.style.opacity = calcValues(
+            values.message1_opacity_out,
+            currentYOffset
+          );
+          objs.message1.style.transform = `translateY(${calcValues(
+            values.message1_translateY_out,
+            currentYOffset
+          )}%)`;
+        }
+        objs.pin1.style.opacity = calcValues(
+          values.pin1_opacity_out,
+          currentYOffset
+        );
+
+        if (
+          scrollRatio <=
+          CalcMeanValue(
+            values.message2_opacity_in[2].end,
+            values.message2_opacity_out[2].end
+          )
+        ) {
+          objs.message2.style.opacity = calcValues(
+            values.message2_opacity_in,
+            currentYOffset
+          );
+          // 3d가 붙은 친구들은 하드웨어 보정이 된다 (퍼포먼스가 좋다)
+          objs.message2.style.transform = `translate3d(0,${calcValues(
+            values.message2_translateY_in,
+            currentYOffset
+          )}%, 0)`;
+          objs.pin2.style.opacity = calcValues(
+            values.pin2_opacity_in,
+            currentYOffset
+          );
+          objs.pin2.style.transform = `scaleY(${calcValues(
+            values.pin2_scaleY,
+            currentYOffset
+          )}%)`;
+        } else {
+          objs.message2.style.opacity = calcValues(
+            values.message2_opacity_out,
+            currentYOffset
+          );
+          objs.message2.style.transform = `translate3d(0,${calcValues(
+            values.message2_translateY_out,
+            currentYOffset
+          )}%,0)`;
+          objs.pin2.style.opacity = calcValues(
+            values.pin2_opacity_out,
+            currentYOffset
+          );
+        }
+
         break;
       case 3:
         break;
