@@ -29,6 +29,7 @@ a {
   left: 0;
 
   padding: 0 1rem;
+  z-index: 9;
 }
 
 .local-nav {
@@ -41,6 +42,7 @@ a {
 
   padding: 0 1rem;
   border-bottom: 1px solid #ddd;
+  z-index: 10;
 }
 
 .global-nav-links,
@@ -190,6 +192,16 @@ a {
   left: 0;
 
   display: none;
+}
+
+.sticky-elem-canvas {
+  height: 100%;
+  top: 0;
+}
+.sticky-elem-canvas canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 #show-scene-0 #scroll-section-0 .sticky-elem,
