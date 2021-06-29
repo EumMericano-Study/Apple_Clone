@@ -214,6 +214,9 @@ a {
   display: block;
 }
 
+.image-blend-canvas {
+  border: thin solid red;
+}
 @media (min-width: 1024px) {
   #scroll-section-0 h1 {
     font-size: 9vw;
