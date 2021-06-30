@@ -497,6 +497,17 @@
 
         break;
       case 3:
+        const widthRatio = window.innerWidth / objs.canvas.width;
+        const heightRatio = window.innerHeight / objs.canvas.height;
+        let canvasScaleRatio;
+
+        if (widthRatio <= heightRatio) {
+          canvasScaleRatio = heightRatio;
+        } else {
+          canvasScaleRatio = widthRatio;
+        }
+        
+        objs.canvas.style.transform = `scale(${canvasScaleRatio})`
         break;
     }
   }
