@@ -534,8 +534,9 @@
 
         if (!values.rectStartY) {
           values.rectStartY = objs.canvas.getBoundingClientRect();
+          values.rect1X[2].end = values.rectStartY / scrollHeight;
+          values.rect2X[2].end = values.rectStartY / scrollHeight;
         }
-
         values.rect1X[0] = (objs.canvas.width - recalculatedInnerWidth) / 2;
         values.rect1X[1] = values.rect1X[0] - whiteRectWidth;
         values.rect2X[0] =
@@ -543,18 +544,19 @@
         values.rect2X[1] = values.rect2X[0] + whiteRectWidth;
 
         objs.context.fillRect(
-          values.rect1X[0],
+          calcValues(values.rect1X, currentYOffset),
           0,
           whiteRectWidth,
           objs.canvas.height
         );
         objs.context.fillRect(
-          values.rect2X[0],
+          calcValues(values.rect2X, currentYOffset),
           0,
-          parseInt(whiteRectWidth),
+          whiteRectWidth,
           objs.canvas.height
         );
 
+        console.log(calcValues(values.rect2X, currentYOffset));
         break;
     }
   }
