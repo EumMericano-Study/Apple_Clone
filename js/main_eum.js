@@ -525,6 +525,7 @@
         }
 
         objs.canvas.style.transform = `scale(${canvasScaleRatio})`;
+        objs.context.fillStyle = "white";
         objs.context.drawImage(objs.images[0], 0, 0);
 
         const recalculatedInnerWidth = window.innerWidth / canvasScaleRatio;
@@ -533,7 +534,12 @@
         const whiteRectWidth = recalculatedInnerWidth * 0.15;
 
         if (!values.rectStartY) {
-          values.rectStartY = objs.canvas.getBoundingClientRect().top;
+          //   values.rectStartY = objs.canvas.getBoundingClientRect().top;
+          values.rectStartY =
+            objs.canvas.offsetTop +
+            (objs.canvas.height - objs.canvas.height * canvasScaleRatio) / 2;
+          values.rect1X[2].start = window.innerHeight / 2 / scrollHeight;
+          values.rect2X[2].start = window.innerHeight / 2 / scrollHeight;
           values.rect1X[2].end = values.rectStartY / scrollHeight;
           values.rect2X[2].end = values.rectStartY / scrollHeight;
         }
@@ -544,13 +550,13 @@
         values.rect2X[1] = values.rect2X[0] + whiteRectWidth;
 
         objs.context.fillRect(
-          calcValues(values.rect1X, currentYOffset),
+          parseInt(calcValues(values.rect1X, currentYOffset)),
           0,
           whiteRectWidth,
           objs.canvas.height
         );
         objs.context.fillRect(
-          calcValues(values.rect2X, currentYOffset),
+          parseInt(calcValues(values.rect2X, currentYOffset)),
           0,
           whiteRectWidth,
           objs.canvas.height

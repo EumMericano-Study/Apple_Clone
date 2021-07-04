@@ -73,6 +73,7 @@ a {
 }
 
 .scroll-section {
+  position: relative;
   padding-top: 50vh;
 }
 
@@ -214,14 +215,11 @@ a {
   display: block;
 }
 
-
-
 #scroll-section-3 {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
-
 
 @media (min-width: 1024px) {
   #scroll-section-0 h1 {
