@@ -195,6 +195,7 @@
       values: {
         rect1X: [0, 0, { start: 0, end: 0 }],
         rect2X: [0, 0, { start: 0, end: 0 }],
+        rectStartY: 0,
       },
     },
   ];
@@ -531,7 +532,10 @@
 
         const whiteRectWidth = recalculatedInnerWidth * 0.15;
 
-        console.log("Section3 start");
+        if (!values.rectStartY) {
+          values.rectStartY = objs.canvas.getBoundingClientRect();
+        }
+
         values.rect1X[0] = (objs.canvas.width - recalculatedInnerWidth) / 2;
         values.rect1X[1] = values.rect1X[0] - whiteRectWidth;
         values.rect2X[0] =
