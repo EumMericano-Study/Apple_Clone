@@ -533,7 +533,7 @@
         const whiteRectWidth = recalculatedInnerWidth * 0.15;
 
         if (!values.rectStartY) {
-          values.rectStartY = objs.canvas.getBoundingClientRect();
+          values.rectStartY = objs.canvas.getBoundingClientRect().top;
           values.rect1X[2].end = values.rectStartY / scrollHeight;
           values.rect2X[2].end = values.rectStartY / scrollHeight;
         }
@@ -556,7 +556,6 @@
           objs.canvas.height
         );
 
-        console.log(calcValues(values.rect2X, currentYOffset));
         break;
     }
   }
