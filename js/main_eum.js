@@ -556,6 +556,7 @@
 
         break;
       case 3:
+        let step = 0;
         const widthRatio = window.innerWidth / objs.canvas.width;
         const heightRatio = window.innerHeight / objs.canvas.height;
 
@@ -605,6 +606,18 @@
           objs.canvas.height
         );
 
+        if (scrollRatio < values.rect1X[2].end) {
+          // 첫 canvas가 꽉 차기 전
+          step = 1;
+          objs.canvas.classList.remove("sticky");
+        } else {
+          // 첫 canvas가 꽉 찬 후
+          step = 2;
+          objs.canvas.classList.add("sticky");
+          objs.canvas.style.top = `${
+            -(objs.canvas.height - objs.canvas.height * canvasScaleRatio) / 2
+          }px`;
+        }
         break;
     }
   }

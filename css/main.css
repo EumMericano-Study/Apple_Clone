@@ -195,7 +195,6 @@ a {
   width: 100%;
   position: fixed;
   left: 0;
-
   display: none;
 }
 
@@ -207,6 +206,11 @@ a {
   position: absolute;
   top: 50%;
   left: 50%;
+}
+
+.image-blend-canvas.sticky {
+  position: fixed;
+  top: 0;
 }
 
 #show-scene-0 #scroll-section-0 .sticky-elem,
