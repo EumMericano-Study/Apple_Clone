@@ -511,6 +511,49 @@
           )}%,0)`;
         }
 
+        if (scrollRatio > 0.9) {
+          const objs = sceneInfo[3].objs;
+          const values = sceneInfo[3].values;
+          const widthRatio = window.innerWidth / objs.canvas.width;
+          const heightRatio = window.innerHeight / objs.canvas.height;
+
+          let canvasScaleRatio;
+
+          if (widthRatio <= heightRatio) {
+            canvasScaleRatio = heightRatio;
+          } else {
+            canvasScaleRatio = widthRatio;
+          }
+
+          objs.canvas.style.transform = `scale(${canvasScaleRatio})`;
+          objs.context.fillStyle = "white";
+          objs.context.drawImage(objs.images[0], 0, 0);
+
+          const recalculatedInnerWidth = window.innerWidth / canvasScaleRatio;
+          const recalculatedInnerHeight = window.innerHeight / canvasScaleRatio;
+
+          const whiteRectWidth = recalculatedInnerWidth * 0.15;
+
+          values.rect1X[0] = (objs.canvas.width - recalculatedInnerWidth) / 2;
+          values.rect1X[1] = values.rect1X[0] - whiteRectWidth;
+          values.rect2X[0] =
+            values.rect1X[0] + recalculatedInnerWidth - whiteRectWidth;
+          values.rect2X[1] = values.rect2X[0] + whiteRectWidth;
+
+          objs.context.fillRect(
+            parseInt(values.rect1X[0]),
+            0,
+            whiteRectWidth,
+            objs.canvas.height
+          );
+          objs.context.fillRect(
+            parseInt(values.rect2X[0]),
+            0,
+            whiteRectWidth,
+            objs.canvas.height
+          );
+        }
+
         break;
       case 3:
         const widthRatio = window.innerWidth / objs.canvas.width;
