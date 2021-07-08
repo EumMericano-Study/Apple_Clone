@@ -11,6 +11,7 @@ body {
   background-color: white;
 
   overflow-x: hidden;
+  word-break: break-all;
 }
 
 p {
@@ -176,7 +177,7 @@ a {
   text-align: center;
 
   padding: 0 1rem;
-  margin: 0 auto;
+  margin: -5em auto 0;
 }
 
 .footer {
@@ -236,6 +237,7 @@ a {
 
   .description {
     font-size: 2rem;
+    padding: 0;
   }
 
   .description strong {
@@ -263,10 +265,13 @@ a {
   }
 
   .mid-message {
+    width: 1000px;
     font-size: 4vw;
+    padding: 0;
   }
 
   .canvas-caption {
     font-size: 2rem;
+    padding: 0;
   }
 }
