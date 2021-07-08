@@ -680,6 +680,14 @@
                             values.canvas_scale,
                             currentYOffset
                         )})`;
+                        objs.canvas.style.marginTop = `0`;
+                    }
+                    if (
+                        values.canvas_scale[2].end > 0 &&
+                        scrollRatio > values.canvas_scale[2].end
+                    ) {
+                        objs.canvas.classList.remove("sticky");
+                        objs.canvas.style.marginTop = `${scrollHeight * 0.4}px`;
                     }
                 }
                 break;
