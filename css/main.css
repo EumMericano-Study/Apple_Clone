@@ -242,6 +242,10 @@ body.before-load {
   will-change: transform, opacity;
 }
 
+.scroll-effect-end .sticky-elem {
+  display: none !important;
+}
+
 #scroll-section-3 {
   display: flex;
   align-items: center;

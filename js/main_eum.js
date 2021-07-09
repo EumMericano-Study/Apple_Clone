@@ -707,12 +707,20 @@
       prevScrollHeight += sceneInfo[i].scrollHeight;
     }
     if (
+      delayedYOffset <
+      prevScrollHeight + sceneInfo[currentScene].scrollHeight
+    ) {
+      document.body.classList.remove("scroll-effect-end");
+    }
+    if (
       delayedYOffset >
       prevScrollHeight + sceneInfo[currentScene].scrollHeight
     ) {
       if (currentScene === sceneInfo.length - 1) return;
       enterNewScene = true;
-      currentScene++;
+      if (currentScene < sceneInfo.length - 1)
+        document.body.classList.add("scroll-effect-end");
+      if (currentScene < sceneInfo.length - 1) currentScene++;
       document.body.setAttribute("id", `show-scene-${currentScene}`);
     }
     if (delayedYOffset < prevScrollHeight) {
