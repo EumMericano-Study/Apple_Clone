@@ -760,16 +760,17 @@
     let tempYOffset = yOffset;
     let tempScrollCount = 0;
 
-    let SIId = setInterval(() => {
-      window.scrollTo(0, tempYOffset);
-      tempYOffset += 5;
+    if (yOffset > 20) {
+      let SIId = setInterval(() => {
+        window.scrollTo(0, tempYOffset);
+        tempYOffset += 3;
 
-      if (tempScrollCount > 10) {
-        clearInterval(SIId);
-      }
-      tempScrollCount++;
-    }, 20);
-
+        if (tempScrollCount > 10) {
+          clearInterval(SIId);
+        }
+        tempScrollCount++;
+      }, 20);
+    }
     window.addEventListener("scroll", () => {
       yOffset = window.pageYOffset;
       scrollLoop();
