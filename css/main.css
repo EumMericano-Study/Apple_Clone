@@ -234,6 +234,58 @@ a {
     flex-direction: column;
 }
 
+.loading {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    transition: 0.5s;
+    opacity: 0;
+    z-index: 100;
+}
+
+.before-load .loading {
+    opacity: 1;
+}
+
+@keyframes loading-spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes loading-circle-ani {
+    0% {
+        stroke-dashoffset: 157;
+    }
+    75% {
+        stroke-dashoffset: -147;
+    }
+    100% {
+        stroke-dashoffset: -157;
+    }
+}
+.loading-circle {
+    width: 54px;
+    height: 54px;
+    animation: loading-spin 3s infinite;
+}
+
+.loading-circle circle {
+    stroke: black;
+    stroke-width: 4;
+    stroke-dasharray: 157;
+    stroke-dashoffset: 0;
+    fill: transparent;
+    animation: loading-circle-ani 1s infinite;
+}
+
 @media (min-width: 1024px) {
     #scroll-section-0 h1 {
         font-size: 9vw;
