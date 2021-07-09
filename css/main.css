@@ -1,284 +1,285 @@
 @charset 'utf-8';
 
 html {
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 14px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 14px;
 }
 
 body {
-  color: rgb(29, 29, 31);
-  letter-spacing: -0.05em;
-  background-color: white;
+    color: rgb(29, 29, 31);
+    letter-spacing: -0.05em;
+    background-color: white;
 
-  overflow-x: hidden;
-  word-break: break-all;
+    overflow-x: hidden;
+    word-break: break-all;
 }
 
 p {
-  line-height: 1.6s;
+    line-height: 1.6s;
 }
 
 a {
-  color: rgb(29, 29, 31);
-  text-decoration: none;
+    color: rgb(29, 29, 31);
+    text-decoration: none;
 }
 .global-nav {
-  width: 100%;
-  height: 44px;
-  position: absolute;
-  top: 0;
-  left: 0;
+    width: 100%;
+    height: 44px;
+    position: absolute;
+    top: 0;
+    left: 0;
 
-  padding: 0 1rem;
-  z-index: 9;
+    padding: 0 1rem;
+    z-index: 9;
 }
 
 .local-nav {
-  width: 100%;
-  height: 52px;
+    width: 100%;
+    height: 52px;
 
-  position: absolute;
-  top: 45px;
-  left: 0;
+    position: absolute;
+    top: 45px;
+    left: 0;
 
-  padding: 0 1rem;
-  border-bottom: 1px solid #ddd;
-  z-index: 10;
+    padding: 0 1rem;
+    border-bottom: 1px solid #ddd;
+    z-index: 10;
 }
 
 .local-nav-sticky .local-nav {
-  position: fixed;
-  top: 0;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: saturate(180%) blur(15px);
+    position: fixed;
+    top: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: saturate(180%) blur(15px);
 }
 
 .global-nav-links,
 .local-nav-links {
-  max-width: 1000px;
-  height: 100%;
+    max-width: 1000px;
+    height: 100%;
 
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
 }
 
 .global-nav-links {
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 .local-nav-links .product-name {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-right: auto;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-right: auto;
 }
 
 .local-nav-links a {
-  font-size: 0.8rem;
+    font-size: 0.8rem;
 }
 .local-nav-links a:not(.product-name) {
-  margin-left: 2em;
+    margin-left: 2em;
 }
 
 .scroll-section {
-  position: relative;
-  padding-top: 50vh;
+    position: relative;
+    padding-top: 50vh;
 }
 
 #scroll-section-0 h1 {
-  position: relative;
-  top: -10vh;
-  font-size: 4rem;
-  text-align: center;
-  z-index: 5;
+    position: relative;
+    top: -10vh;
+    font-size: 4rem;
+    text-align: center;
+    z-index: 5;
 }
 
 .main-message {
-  height: 3em;
+    height: 3em;
 
-  top: 35vh;
+    top: 35vh;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
 
-  opacity: 0;
+    opacity: 0;
 }
 
 .main-message small {
-  display: block;
-  font-size: 1.2rem;
-  line-height: 1rem;
-  margin-bottom: 0.5rem;
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .main-message p {
-  font-weight: bold;
-  text-align: center;
-  line-height: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2em;
 }
 
 .description {
-  max-width: 1000px;
+    max-width: 1000px;
 
-  padding: 0 1rem;
-  font-size: 1.2rem;
-  color: #888;
+    padding: 0 1rem;
+    font-size: 1.2rem;
+    color: #888;
 
-  margin: 0 auto;
+    margin: 0 auto;
 }
 
 .description strong {
-  font-size: 3rem;
-  color: rgb(29, 29, 31);
-  float: left;
-  margin-right: 0.2em;
+    font-size: 3rem;
+    color: rgb(29, 29, 31);
+    float: left;
+    margin-right: 0.2em;
 }
 
 #scroll-section-2 .main-message {
-  font-size: 3.5rem;
+    font-size: 3.5rem;
 }
 
 #scroll-section-2 .sticky-elem[data-index="1"] {
-  top: 10%;
-  left: 40%;
-  opacity: 1;
+    top: 10%;
+    left: 40%;
+    opacity: 1;
 }
 #scroll-section-2 .sticky-elem[data-index="2"] {
-  top: 15%;
-  left: 45%;
-  opacity: 1;
+    top: 15%;
+    left: 45%;
+    opacity: 1;
 }
 .desc-message {
-  width: 50%;
-  font-weight: bold;
-  opacity: 0;
+    width: 50%;
+    font-weight: bold;
+    opacity: 0;
 }
 
 .pin {
-  width: 1px;
-  height: 100px;
+    width: 1px;
+    height: 100px;
 
-  background-color: rgb(29, 29, 31);
+    background-color: rgb(29, 29, 31);
 }
 
 .mid-message {
-  max-width: 1000px;
-  font-size: 2rem;
-  color: #888;
+    max-width: 1000px;
+    font-size: 2rem;
+    color: #888;
 
-  padding: 0 1rem;
-  margin: 0 auto;
+    padding: 0 1rem;
+    margin: 0 auto;
 }
 
 .mid-message strong {
-  color: rgb(29, 29, 31);
+    color: rgb(29, 29, 31);
 }
 
 .canvas-caption {
-  max-width: 1000px;
+    max-width: 1000px;
 
-  font-size: 1.2rem;
-  color: #888;
-  text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    text-align: center;
 
-  padding: 0 1rem;
-  margin: -5em auto 0;
+    padding: 0 1rem;
+    margin: -5em auto 0;
 }
 
 .footer {
-  height: 7rem;
+    height: 7rem;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  color: white;
+    color: white;
 
-  background-color: darkorange;
+    background-color: darkorange;
 }
 
 .sticky-elem {
-  width: 100%;
-  position: fixed;
-  left: 0;
-  display: none;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    display: none;
 }
 
 .sticky-elem-canvas {
-  height: 100%;
-  top: 0;
+    height: 100%;
+    top: 0;
 }
 .sticky-elem-canvas canvas {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 .image-blend-canvas.sticky {
-  position: fixed;
-  top: 0;
+    position: fixed;
+    top: 0;
 }
 
 #show-scene-0 #scroll-section-0 .sticky-elem,
+#show-scene-2 #scroll-section-1 .sticky-elem,
 #show-scene-2 #scroll-section-2 .sticky-elem,
 #show-scene-3 #scroll-section-3 .sticky-elem {
-  display: block;
+    display: block;
 }
 
 #scroll-section-3 {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 @media (min-width: 1024px) {
-  #scroll-section-0 h1 {
-    font-size: 9vw;
-  }
+    #scroll-section-0 h1 {
+        font-size: 9vw;
+    }
 
-  .main-message {
-    font-size: 4vw;
-  }
+    .main-message {
+        font-size: 4vw;
+    }
 
-  .description {
-    font-size: 2rem;
-    padding: 0;
-  }
+    .description {
+        font-size: 2rem;
+        padding: 0;
+    }
 
-  .description strong {
-    font-size: 6rem;
-  }
+    .description strong {
+        font-size: 6rem;
+    }
 
-  #scroll-section-2 .main-message {
-    font-size: 6vw;
-  }
+    #scroll-section-2 .main-message {
+        font-size: 6vw;
+    }
 
-  #scroll-section-2 .sticky-elem[data-index="1"] {
-    top: 20%;
-    left: 53%;
-  }
-  #scroll-section-2 .sticky-elem[data-index="2"] {
-    left: 55%;
-  }
+    #scroll-section-2 .sticky-elem[data-index="1"] {
+        top: 20%;
+        left: 53%;
+    }
+    #scroll-section-2 .sticky-elem[data-index="2"] {
+        left: 55%;
+    }
 
-  .main-message small {
-    font-size: 1.5vw;
-  }
+    .main-message small {
+        font-size: 1.5vw;
+    }
 
-  .desc-message {
-    width: 20%;
-  }
+    .desc-message {
+        width: 20%;
+    }
 
-  .mid-message {
-    width: 1000px;
-    font-size: 4vw;
-    padding: 0;
-  }
+    .mid-message {
+        width: 1000px;
+        font-size: 4vw;
+        padding: 0;
+    }
 
-  .canvas-caption {
-    font-size: 2rem;
-    padding: 0;
-  }
+    .canvas-caption {
+        font-size: 2rem;
+        padding: 0;
+    }
 }
